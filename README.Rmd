@@ -1,0 +1,88 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.align = "center",
+  fig.path = "man/figures/README-"
+)
+```
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+# Overview
+
+**MPWR** is an R package for multivariate time series (or multivariate 
+structured longitudinal data) modeling and optimal segmentation via multiple 
+polynomial piecewise regression (MPWR). It uses MLE for the estimation of the 
+regression parameters with dynamic programming for the segmentation.
+
+# Installation
+
+You can install the MPWR package from [GitHub](https://github.com/fchamroukhi/MPWR_r)
+with:
+
+```{r, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("fchamroukhi/MPWR_r")
+```
+
+To build *vignettes* for examples of usage, type the command below instead:
+
+```{r, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("fchamroukhi/MPWR_r", 
+                         build_opts = c("--no-resave-data", "--no-manual"), 
+                         build_vignettes = TRUE)
+```
+
+Use the following command to display vignettes:
+
+```{r, eval = FALSE}
+browseVignettes("MPWR")
+```
+
+# Usage
+
+```{r, message = FALSE}
+library(MPWR)
+```
+
+```{r, message = FALSE}
+# Application to a toy data set
+data("toydataset")
+x <- toydataset$x
+Y <- as.matrix(toydataset[,c("y1", "y2", "y3")])
+
+K <- 5 # Number of segments
+p <- 3 # Polynomial degree
+
+mpwr <- fitMPWRFisher(X = x, Y = Y, K, p)
+
+mpwr$summary()
+
+mpwr$plot()
+```
+
+```{r, message = FALSE}
+# Application to a real data set (human activity recogntion data)
+data("realdataset")
+
+x <- realdataset$x
+Y <- as.matrix(realdataset[,c("y1", "y2", "y3")])
+
+K <- 5 # Number of segments
+p <- 3 # Polynomial degree
+
+mpwr <- fitMPWRFisher(X = x, Y = Y, K, p)
+
+mpwr$summary()
+
+mpwr$plot()
+```

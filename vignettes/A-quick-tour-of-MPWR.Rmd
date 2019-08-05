@@ -1,8 +1,8 @@
 ---
-title: "A-quick-tour-of-PWR"
+title: "A-quick-tour-of-MPWR"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{A-quick-tour-of-PWR}
+  %\VignetteIndexEntry{A-quick-tour-of-MPWR}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -26,29 +26,33 @@ knit_hooks$set(par = function(before, options, envir)
 ```
 
 ```{r, message = FALSE, echo = FALSE}
-library(PWR)
+library(MPWR)
 ```
 
 # Introduction
 
-**PWR** is an R package for time series (or structured longitudinal data) 
-modeling and optimal segmentation via Piecewise Regression (PWR) fitted by
-maximum-likelihood via an optimized dynamic programming. This document gives a 
-quick tour of **PWR** (version `r packageVersion("PWR")`) functionalities.
+**MPWR** is an R package for multivariate time series (or multivariate 
+structured longitudinal data) modeling and optimal segmentation via multiple 
+polynomial piecewise regression (MPWR). It uses MLE for the estimation of the 
+regression parameters with dynamic programming for the segmentation. This 
+document gives a quick tour of **MPWR** (version `r packageVersion("MPWR")`)
+functionalities.
 
 It was written in R Markdown, using the [knitr](https://cran.r-project.org/package=knitr)
 package for production.
 
-See `help(package="PWR")` for further details and references provided by
-`citation("PWR")`.
+See `help(package="MPWR")` for further details and references provided by
+`citation("MPWR")`.
 
 # Load data
 
 ```{r}
 data("toydataset")
+x <- toydataset$x
+Y <- as.matrix(toydataset[,c("y1", "y2", "y3")])
 ```
 
-# Set up PWR model parameters
+# Set up MPWR model parameters
 
 ```{r}
 K <- 5 # Number of segments
@@ -58,13 +62,13 @@ p <- 3 # Polynomial degree
 # Estimation
 
 ```{r}
-pwr <- fitPWRFisher(toydataset$x, toydataset$y, K, p)
+mpwr <- fitMPWRFisher(X = x, Y = Y, K, p)
 ```
 
 # Summary
 
 ```{r}
-pwr$summary()
+mpwr$summary()
 ```
 
 # Plots
@@ -72,11 +76,11 @@ pwr$summary()
 ## Regressors
 
 ```{r}
-pwr$plot(what = "regressors")
+mpwr$plot(what = "regressors")
 ```
 
 ## Segmentation
 
 ```{r}
-pwr$plot(what = "segmentation")
+mpwr$plot(what = "segmentation")
 ```

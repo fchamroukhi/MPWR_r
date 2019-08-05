@@ -7,12 +7,12 @@
 using namespace Rcpp;
 
 // costMatrix
-arma::mat costMatrix(arma::colvec& y, arma::mat& X, double Lmin);
-RcppExport SEXP _PWR_costMatrix(SEXP ySEXP, SEXP XSEXP, SEXP LminSEXP) {
+arma::mat costMatrix(arma::mat& y, arma::mat& X, double Lmin);
+RcppExport SEXP _MPWR_costMatrix(SEXP ySEXP, SEXP XSEXP, SEXP LminSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::colvec& >::type y(ySEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type y(ySEXP);
     Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
     Rcpp::traits::input_parameter< double >::type Lmin(LminSEXP);
     rcpp_result_gen = Rcpp::wrap(costMatrix(y, X, Lmin));
@@ -21,11 +21,11 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_PWR_costMatrix", (DL_FUNC) &_PWR_costMatrix, 3},
+    {"_MPWR_costMatrix", (DL_FUNC) &_MPWR_costMatrix, 3},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_PWR(DllInfo *dll) {
+RcppExport void R_init_MPWR(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }

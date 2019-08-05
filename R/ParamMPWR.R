@@ -1,6 +1,6 @@
 #' A Reference Class which contains the parameters of a PWR model.
 #'
-#' ParamPWR contains all the parameters of a PWR model. The parameters are
+#' ParamMPWR contains all the parameters of a PWR model. The parameters are
 #' calculated by the initialization Method and then updated by the Method
 #' dynamic programming (here dynamic programming)
 #'
@@ -14,42 +14,40 @@
 #'   default.
 #' @field gamma Set of transition points. `gamma` is a column matrix of size
 #'   \eqn{(K + 1, 1)}.
-#' @field beta Parameters of the polynomial regressions. `beta` is a matrix of
-#'   dimension \eqn{(p + 1, K)}, with `p` the order of the polynomial
-#'   regression. `p` is fixed to 3 by default.
-#' @field sigma2 The variances for the `K` regimes. `sigma2` is a matrix of size
-#'   \eqn{(K, 1)}.
-#' @field phi A list giving the regression design matrices for the polynomial
-#'   and the logistic regressions.
+#' @field beta Parameters of the polynomial regressions. `beta` is an array of
+#'   dimension \eqn{(p + 1, d, K)}, with `p` the order of the polynomial
+#'   regression, `d` the dimension of the multivariate time-series. `p` is fixed
+#'   to 3 by default.
+#' @field sigma2 The variances for the `K` regimes. `sigma2` is an array of size
+#'   \eqn{(d, d, K)}.
+#' @field phi A matrix giving the regression design matrix for the polynomial
+#'   regression.
 #' @export
-ParamPWR <- setRefClass(
-  "ParamPWR",
+ParamMPWR <- setRefClass(
+  "ParamMPWR",
   fields = list(
-    X = "numeric",
-    Y = "numeric",
-    m = "numeric",
+    mData = "MData",
     phi = "matrix",
 
     K = "numeric", # Number of regimes
     p = "numeric", # Dimension of beta (order of polynomial regression)
 
     gamma = "matrix",
-    beta = "matrix",
-    sigma2 = "matrix"
+    beta = "array",
+    sigma2 = "array"
   ),
   methods = list(
-    initialize = function(X = numeric(), Y = numeric(1), K = 2, p = 3) {
-      X <<- X
-      Y <<- Y
-      m <<- length(Y)
-      phi <<- designmatrix(X, p)$XBeta
+    initialize = function(mData = MData(numeric(1), matrix(1)), K = 1, p = 3) {
+      mData <<- mData
+
+      phi <<- designmatrix(x = mData$X, p = p)$XBeta
 
       K <<- K
       p <<- p
 
       gamma <<- matrix(NA, K + 1)
-      beta <<- matrix(NA, p + 1, K)
-      sigma2 <<- matrix(NA, K)
+      beta <<- array(NA, dim = c(p + 1, mData$d, K))
+      sigma2 <<- array(NA, dim = c(mData$d, mData$d, K))
 
     },
 
@@ -72,16 +70,12 @@ ParamPWR <- setRefClass(
         i <- gamma[k] + 1
         j <- gamma[k + 1]
         nk <- j - i + 1
-        yij <- Y[i:j]
+        Yij <- mData$Y[i:j, ]
         X_ij <- phi[i:j, , drop = FALSE]
-        beta[, k] <<- solve(t(X_ij) %*% X_ij, tol = 0) %*% t(X_ij) %*% yij
+        beta[, , k] <<- solve(t(X_ij) %*% X_ij, tol = 0) %*% t(X_ij) %*% Yij
 
-        if (p == 0) {
-          z <- yij - X_ij * beta[, k]
-        } else {
-          z <- yij - X_ij %*% beta[, k]
-        }
-        sigma2[k] <<- t(z) %*% z / nk # Variances
+        z <- Yij - X_ij %*% beta[, , k]
+        sigma2[, , k] <<- t(z) %*% z / nk # Variances
       }
     }
   )

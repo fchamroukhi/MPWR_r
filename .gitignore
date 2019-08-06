@@ -1,6 +1,12 @@
+<<<<<<< Updated upstream
 .DS_Store
+=======
+>>>>>>> Stashed changes
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
+<<<<<<< Updated upstream
 inst/doc
+=======
+>>>>>>> Stashed changes

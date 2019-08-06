@@ -12,7 +12,7 @@ Description: A multiple polynomial piecewise regression model for the optimal
     MLE for the estimation of the regression parameters with dynamic 
     programming for the segmentation. Originally developped and written in 'Matlab'
     by Faicel Chamroukhi <https://github.com/fchamroukhi/MPWR>
-URL: https://github.com/fchamroukhi/MPWR
+URL: https://github.com/fchamroukhi/MPWR_r
 License: GPL (>= 3)
 Depends: 
     R (>= 2.10)

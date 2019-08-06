@@ -1,12 +1,12 @@
-#' fitMPWRFisher implements an optimized dynamic programming algorithm to fit a
+#' fitMPWR implements an optimized dynamic programming algorithm to fit a
 #' PWR model.
 #'
-#' fitMPWRFisher is used to fit a Mulitvariate Piecewise Regression (PWR) model
+#' fitMPWR is used to fit a Mulitvariate Piecewise Regression (PWR) model
 #' by maximum-likelihood via an optimized dynamic programming algorithm. The
 #' estimation performed by the dynamic programming algorithm provides an optimal
 #' segmentation of the time series.
 #'
-#' @details fitMPWRFisher function implements an optimized dynamic programming
+#' @details fitMPWR function implements an optimized dynamic programming
 #'   algorithm of the MPWR model. This function starts with the calculation of
 #'   the "cost matrix" then it estimates the transition points given `K` the
 #'   number of regimes thanks to the method `computeDynamicProgram` (method of
@@ -20,7 +20,7 @@
 #' @param K The number of regimes/segments (PWR components).
 #' @param p Optional. The order of the polynomial regression. By default, `p` is
 #'   set at 3.
-#' @return fitMPWRFisher returns an object of class [ModelMPWR][ModelMPWR].
+#' @return fitMPWR returns an object of class [ModelMPWR][ModelMPWR].
 #' @seealso [ModelMPWR], [ParamMPWR], [StatMPWR]
 #' @export
 #'
@@ -29,12 +29,12 @@
 #' x <- toydataset$x
 #' Y <- as.matrix(toydataset[,c("y1", "y2", "y3")])
 #'
-#' mpwr <- fitMPWRFisher(X = x, Y = Y, K = 5, p = 1)
+#' mpwr <- fitMPWR(X = x, Y = Y, K = 5, p = 1)
 #'
 #' mpwr$summary()
 #'
 #' mpwr$plot()
-fitMPWRFisher = function(X, Y, K, p = 3) {
+fitMPWR = function(X, Y, K, p = 3) {
 
   if (is.vector(Y) || is.data.frame(Y)) { # Univariate time series or data frame
     Y <- as.matrix(Y)

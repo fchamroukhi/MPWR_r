@@ -63,7 +63,7 @@ Y <- as.matrix(toydataset[,c("y1", "y2", "y3")])
 K <- 5 # Number of segments
 p <- 3 # Polynomial degree
 
-mpwr <- fitMPWRFisher(X = x, Y = Y, K, p)
+mpwr <- fitMPWR(X = x, Y = Y, K, p)
 
 mpwr$summary()
 
@@ -80,7 +80,7 @@ Y <- as.matrix(realdataset[,c("y1", "y2", "y3")])
 K <- 5 # Number of segments
 p <- 3 # Polynomial degree
 
-mpwr <- fitMPWRFisher(X = x, Y = Y, K, p)
+mpwr <- fitMPWR(X = x, Y = Y, K, p)
 
 mpwr$summary()
 

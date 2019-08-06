@@ -1,30 +1,23 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 <!-- badges: start -->
-
 <!-- badges: end -->
+Overview
+========
 
-# Overview
+**MPWR** is an R package for multivariate time series (or multivariate structured longitudinal data) modeling and optimal segmentation via multiple polynomial piecewise regression (MPWR). It uses MLE for the estimation of the regression parameters with dynamic programming for the segmentation.
 
-**MPWR** is an R package for multivariate time series (or multivariate
-structured longitudinal data) modeling and optimal segmentation via
-multiple polynomial piecewise regression (MPWR). It uses MLE for the
-estimation of the regression parameters with dynamic programming for the
-segmentation.
+Installation
+============
 
-# Installation
-
-You can install the MPWR package from
-[GitHub](https://github.com/fchamroukhi/MPWR_r) with:
+You can install the MPWR package from [GitHub](https://github.com/fchamroukhi/MPWR_r) with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("fchamroukhi/MPWR_r")
 ```
 
-To build *vignettes* for examples of usage, type the command below
-instead:
+To build *vignettes* for examples of usage, type the command below instead:
 
 ``` r
 # install.packages("devtools")
@@ -39,7 +32,8 @@ Use the following command to display vignettes:
 browseVignettes("MPWR")
 ```
 
-# Usage
+Usage
+=====
 
 ``` r
 library(MPWR)
@@ -54,7 +48,7 @@ Y <- as.matrix(toydataset[,c("y1", "y2", "y3")])
 K <- 5 # Number of segments
 p <- 3 # Polynomial degree
 
-mpwr <- fitMPWRFisher(X = x, Y = Y, K, p)
+mpwr <- fitMPWR(X = x, Y = Y, K, p)
 
 mpwr$summary()
 #> ---------------------
@@ -165,7 +159,7 @@ Y <- as.matrix(realdataset[,c("y1", "y2", "y3")])
 K <- 5 # Number of segments
 p <- 3 # Polynomial degree
 
-mpwr <- fitMPWRFisher(X = x, Y = Y, K, p)
+mpwr <- fitMPWR(X = x, Y = Y, K, p)
 
 mpwr$summary()
 #> ---------------------

@@ -1,18 +1,17 @@
 Type: Package
 Package: MPWR
-Title: Multiple Polynomial Piecewise Regression ('MPWR') for Optimal Time Series Segmentation
+Title: Multiple Polynomial Piecewise Regression ('MPWR') for Optimal Multivariate Time-Series Segmentation
 Version: 0.1.0
 Authors@R: c(person("Faicel", "Chamroukhi", role = c("aut"),
     email = "faicel.chamroukhi@unicaen.fr",
     comment = c(ORCID = "0000-0002-5894-3103")),
-    person("Marius", "Bartcus", role = c("aut"), 
-    email = "marius.bartcus@gmail.com"),
-    person("Florian", "Lecocq", role = c("aut", "cre"),
+    person("Florian", "Lecocq", role = c("aut", "trl", "cre"), comment = "R port",
     email = "florian.lecocq@outlook.com"))
 Description: A multiple polynomial piecewise regression model for the optimal 
-    segmentation of a multivariate time series with regime changes. It uses 
+    segmentation of multivariate time series with regime changes. It uses 
     MLE for the estimation of the regression parameters with dynamic 
-    programming for the segmentation.
+    programming for the segmentation. Originally developped and written in 'Matlab'
+    by Faicel Chamroukhi <https://github.com/fchamroukhi/MPWR>
 URL: https://github.com/fchamroukhi/MPWR
 License: GPL (>= 3)
 Depends: 
@@ -36,7 +35,7 @@ Collate:
     ParamMPWR.R
     StatMPWR.R
     ModelMPWR.R
-    fitMPWRFisher.R
+    fitMPWR.R
     data-realdataset.R
     data-toydataset.R
 VignetteBuilder: knitr

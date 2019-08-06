@@ -14,7 +14,7 @@
 #' x <- toydataset$x
 #' Y <- as.matrix(toydataset[,c("y1", "y2", "y3")])
 #'
-#' mpwr <- fitMPWRFisher(X = x, Y = Y, K = 5, p = 1)
+#' mpwr <- fitMPWR(X = x, Y = Y, K = 5, p = 1)
 #'
 #' # mpwr is a ModelMPWR object. It contains some methods such as 'summary' and 'plot'
 #' mpwr$summary()

@@ -7,11 +7,11 @@ Authors@R: c(person("Faicel", "Chamroukhi", role = c("aut"),
     comment = c(ORCID = "0000-0002-5894-3103")),
     person("Florian", "Lecocq", role = c("aut", "trl", "cre"), comment = "R port",
     email = "florian.lecocq@outlook.com"))
-Description: A multiple polynomial piecewise regression model for the optimal 
-    segmentation of multivariate time series with regime changes. It uses 
-    MLE for the estimation of the regression parameters with dynamic 
-    programming for the segmentation. Originally developped and written in 'Matlab'
-    by Faicel Chamroukhi <https://github.com/fchamroukhi/MPWR>
+Description: Provides a multiple polynomial piecewise regression model for the 
+    optimal segmentation of multivariate time series with regime changes. It 
+    uses MLE for the estimation of the regression parameters with dynamic 
+    programming for the segmentation. Originally developped and written in 
+    'Matlab' by Faicel Chamroukhi <https://github.com/fchamroukhi/MPWR>.
 URL: https://github.com/fchamroukhi/MPWR_r
 License: GPL (>= 3)
 Depends: 

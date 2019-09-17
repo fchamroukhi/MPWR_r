@@ -6,11 +6,11 @@
 \alias{MPWR-package}
 \title{MPWR: Multiple Polynomial Piecewise Regression ('MPWR') for Optimal Multivariate Time-Series Segmentation}
 \description{
-A multiple polynomial piecewise regression model for the optimal 
-    segmentation of multivariate time series with regime changes. It uses 
-    MLE for the estimation of the regression parameters with dynamic 
-    programming for the segmentation. Originally developped and written in 'Matlab'
-    by Faicel Chamroukhi <https://github.com/fchamroukhi/MPWR>
+Provides a multiple polynomial piecewise regression model for the 
+    optimal segmentation of multivariate time series with regime changes. It 
+    uses MLE for the estimation of the regression parameters with dynamic 
+    programming for the segmentation. Originally developped and written in 
+    'Matlab' by Faicel Chamroukhi <https://github.com/fchamroukhi/MPWR>.
 }
 \seealso{
 Useful links:

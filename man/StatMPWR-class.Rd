@@ -4,7 +4,7 @@
 \name{StatMPWR-class}
 \alias{StatMPWR-class}
 \alias{StatMPWR}
-\title{A Reference Class which contains statistics of a PWR model.}
+\title{A Reference Class which contains statistics of a MPWR model.}
 \description{
 StatMPWR contains all the statistics associated to a \link[=ParamMPWR]{MPWR} model.
 }

@@ -4,9 +4,9 @@
 \name{ParamMPWR-class}
 \alias{ParamMPWR-class}
 \alias{ParamMPWR}
-\title{A Reference Class which contains the parameters of a PWR model.}
+\title{A Reference Class which contains the parameters of a MPWR model.}
 \description{
-ParamMPWR contains all the parameters of a PWR model. The parameters are
+ParamMPWR contains all the parameters of a MPWR model. The parameters are
 calculated by the initialization Method and then updated by the Method
 dynamic programming (here dynamic programming)
 }

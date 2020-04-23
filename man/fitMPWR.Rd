@@ -3,7 +3,7 @@
 \name{fitMPWR}
 \alias{fitMPWR}
 \title{fitMPWR implements an optimized dynamic programming algorithm to fit a
-PWR model.}
+MPWR model.}
 \usage{
 fitMPWR(X, Y, K, p = 3)
 }
@@ -24,7 +24,7 @@ set at 3.}
 fitMPWR returns an object of class \link{ModelMPWR}.
 }
 \description{
-fitMPWR is used to fit a Mulitvariate Piecewise Regression (PWR) model
+fitMPWR is used to fit a Mulitvariate Piecewise Regression (MPWR) model
 by maximum-likelihood via an optimized dynamic programming algorithm. The
 estimation performed by the dynamic programming algorithm provides an optimal
 segmentation of the time series.

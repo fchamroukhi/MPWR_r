@@ -1,7 +1,7 @@
 #' fitMPWR implements an optimized dynamic programming algorithm to fit a
-#' PWR model.
+#' MPWR model.
 #'
-#' fitMPWR is used to fit a Mulitvariate Piecewise Regression (PWR) model
+#' fitMPWR is used to fit a Mulitvariate Piecewise Regression (MPWR) model
 #' by maximum-likelihood via an optimized dynamic programming algorithm. The
 #' estimation performed by the dynamic programming algorithm provides an optimal
 #' segmentation of the time series.

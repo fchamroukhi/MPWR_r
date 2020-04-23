@@ -1,4 +1,4 @@
-#' A Reference Class which contains statistics of a PWR model.
+#' A Reference Class which contains statistics of a MPWR model.
 #'
 #' StatMPWR contains all the statistics associated to a [MPWR][ParamMPWR] model.
 #'
